@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Bleeding3</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>Bleeding<span>3</span></h1>
+    <div class="actions">
+      <button id="scoresBtn" class="ghost">Scores</button>
+      <button id="newGameBtn" class="ghost">New game</button>
+    </div>
+  </header>
+
+  <main class="game">
+    <!-- Black player (top, flipped on phones) -->
+    <section class="player" id="player-black" data-owner="black">
+      <div class="player-head">
+        <span class="dot wood"></span>
+        <span class="player-name">Wood</span>
+      </div>
+      <div class="tray" id="tray-black"></div>
+    </section>
+
+    <!-- Board -->
+    <section class="board-wrap">
+      <div class="board" id="board">
+        <div class="grid" id="grid"></div>
+        <div class="pieces" id="pieces"></div>
+      </div>
+      <p class="status" id="status">White to place</p>
+    </section>
+
+    <!-- White player (bottom) -->
+    <section class="player" id="player-white" data-owner="white">
+      <div class="player-head">
+        <span class="dot bone"></span>
+        <span class="player-name">Bone</span>
+      </div>
+      <div class="tray" id="tray-white"></div>
+    </section>
+  </main>
+
+  <!-- Win dialog -->
+  <dialog id="winDialog" class="dialog">
+    <form method="dialog" id="winForm">
+      <h2 id="winTitle">Bone wins!</h2>
+      <p id="winSub">Won in <strong>0</strong> placements.</p>
+      <label>Winner name
+        <input id="winnerName" type="text" maxlength="20" placeholder="Name" />
+      </label>
+      <menu>
+        <button value="save" class="primary">Save &amp; play again</button>
+      </menu>
+    </form>
+  </dialog>
+
+  <!-- Scoreboard dialog -->
+  <dialog id="scoresDialog" class="dialog">
+    <h2>Scoreboard</h2>
+    <p class="hint">Fewest placements until a win.</p>
+    <ol id="scoreList" class="score-list"></ol>
+    <menu>
+      <button id="clearScores" class="ghost">Clear</button>
+      <button id="closeScores" class="primary" autofocus>Close</button>
+    </menu>
+  </dialog>
+
+  <script src="game.js"></script>
+</body>
+</html>
