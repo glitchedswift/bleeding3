@@ -94,6 +94,7 @@ function newGame() {
     winner: null,
   };
   nextId = 0;
+  delta = { r: 2, c: 2 };
   for (const k of Object.keys(els)) delete els[k];
   piecesLayer.innerHTML = "";
   render();
@@ -169,8 +170,18 @@ function onGridClick(dr, dc) {
   handleCellClick(dr - delta.r, dc - delta.c);
 }
 
+// True while the current delta keeps every piece inside the visible inner 3x3.
+function fitsInner(d) {
+  return state.pieces.every((p) => {
+    const dr = p.r + d.r, dc = p.c + d.c;
+    return dr >= 1 && dr <= 3 && dc >= 1 && dc <= 3;
+  });
+}
+
 function render() {
-  delta = centerDelta();
+  // Only recenter when a piece has drifted out of the inner 3x3 — otherwise
+  // leave the board put so it doesn't jump after every move.
+  if (!fitsInner(delta)) delta = centerDelta();
 
   // Pieces (persistent elements -> smooth transitions).
   const live = new Set();
