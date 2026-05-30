@@ -212,7 +212,7 @@ function renderTrays() {
     tray.innerHTML = "";
     for (let i = 0; i < state.pending[owner]; i++) {
       const pip = document.createElement("div");
-      pip.className = "pending piece " + owner;
+      pip.className = "pending " + owner;
       pip.innerHTML = '<div class="face"></div>';
       tray.appendChild(pip);
     }
