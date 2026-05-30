@@ -85,7 +85,7 @@ button:active { transform: scale(0.96); }
   flex: 0 0 auto;
   width: calc(var(--cell) * 0.6);
   height: calc(var(--cell) * 0.6);
-  padding: 8%;
+  padding: calc(var(--cell) * 0.05);
 }
 
 /* Board */
